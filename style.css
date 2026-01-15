@@ -1,0 +1,588 @@
+/* ===== متغيرات الألوان العامة (CSS Variables) ===== */
+:root {
+    --color-bg: #f9fafb;
+    --color-bg-alt: #ffffff;
+    --color-primary: #1E3A8A;     /* أزرق داكن */
+    --color-secondary: #10B981;   /* أخضر */
+    --color-accent: #F59E0B;      /* برتقالي */
+    --color-text-main: #111827;   /* رمادي غامق جداً */
+    --color-text-muted: #6B7280;  /* رمادي متوسط */
+    --color-border: #E5E7EB;
+    --shadow-soft: 0 4px 10px rgba(0,0,0,0.08);
+    --shadow-strong: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* ===== Dark Mode ===== */
+.dark-mode {
+    --color-bg: #0f172a;
+    --color-bg-alt: #1e293b;
+    --color-primary: #38bdf8;
+    --color-secondary: #22c55e;
+    --color-accent: #fbbf24;
+    --color-text-main: #f1f5f9;
+    --color-text-muted: #cbd5e1;
+    --color-border: #334155;
+}
+
+/* ===== إعدادات عامة ===== */
+body {
+    background-color: var(--color-bg);
+    font-family: 'Tahoma', sans-serif;
+    direction: rtl;
+    margin: 0;
+    padding: 0;
+    color: var(--color-text-main);
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+/* حركة دخول الصفحة */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== شريط التنقل العلوي (Header + Navbar) ===== */
+.main-header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: var(--color-bg-alt);
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 40px;
+    z-index: 1000;
+}
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 25px;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 20px;
+    color: var(--color-primary);
+}
+.logo img {
+    height: 55px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.main-nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.main-nav a:hover {
+    color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+/* الرابط النشط */
+.main-nav .active {
+    color: var(--color-primary);
+    font-weight: bold;
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: 4px;
+}
+
+/* زر الوضع الداكن */
+.dark-toggle {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+}
+
+.dark-toggle:hover {
+    transform: scale(1.2);
+}
+
+/* ===== محتوى الصفحات ===== */
+.page-content {
+    text-align: center;
+    padding: 120px 20px 60px;
+}
+
+/* ===== Hero Section ===== */
+.hero {
+    background: linear-gradient(135deg, #1E3A8A 0%, #10B981 100%);
+    color: white;
+    padding: 120px 20px;
+    text-align: center;
+    animation: fadeIn 1.5s ease;
+}
+
+.hero-content {
+    max-width: 700px;
+    margin: auto;
+    animation: slideUp 1.2s ease;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.hero p {
+    font-size: 20px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    color: #f0fdf4;
+}
+
+.hero-btn {
+    background-color: var(--color-accent);
+    color: white;
+    padding: 14px 32px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-soft);
+}
+
+.hero-btn:hover {
+    background-color: #D97706;
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: var(--shadow-strong);
+}
+
+/* ===== العناوين والنصوص ===== */
+h1 {
+    color: var(--color-primary);
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+p {
+    color: var(--color-text-muted);
+    font-size: 18px;
+    width: 70%;
+    margin: 0 auto 25px auto;
+    line-height: 1.7;
+}
+
+/* ===== الأزرار ===== */
+button {
+    background-color: var(--color-secondary);
+    color: white;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 17px;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-soft);
+}
+
+button:hover {
+    background-color: #059669;
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: var(--shadow-strong);
+}
+
+/* ===== روابط أسفل المحتوى ===== */
+.links-wrapper a {
+    display: inline-block;
+    margin: 0 10px;
+    text-decoration: none;
+    color: var(--color-accent);
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.links-wrapper a:hover {
+    color: #D97706;
+    transform: scale(1.08);
+}
+
+/* ===== بطاقات صفحة عن الشركة ===== */
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: var(--color-bg-alt);
+    width: 260px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    animation: cardFade 0.8s ease;
+}
+
+@keyframes cardFade {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-strong);
+}
+
+.card-icon {
+    font-size: 40px;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: var(--color-text-muted);
+    font-size: 16px;
+}
+
+/* ===== نموذج التواصل ===== */
+form {
+    background: var(--color-bg-alt);
+    padding: 25px;
+    margin: 40px auto;
+    width: 55%;
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+    animation: fadeIn 1.2s ease;
+}
+
+.input-group {
+    position: relative;
+    width: 90%;
+    margin: 15px auto;
+}
+
+.input-group i {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-primary);
+    font-size: 18px;
+}
+
+.input-group input,
+.input-group textarea {
+    padding-right: 40px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+select {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: var(--color-bg-alt);
+    padding-right: 40px;
+}
+/* ===== select مع أيقونة ===== */
+.input-group select {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: var(--color-bg-alt);
+    padding-right: 40px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+input:hover, textarea:hover {
+    border-color: var(--color-primary);
+}
+
+input:focus, textarea:focus {
+    border-color: var(--color-secondary);
+    outline: none;
+    box-shadow: 0 0 8px rgba(16,185,129,0.4);
+}
+
+/* زر العودة */
+.back-btn {
+    background-color: var(--color-secondary);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #059669;
+    transform: translateY(-3px);
+}
+
+/* ===== تذييل الصفحة ===== */
+.main-footer {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 20px 10px;
+    margin-top: 40px;
+    font-size: 15px;
+    text-align: center;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .main-nav a {
+        margin: 10px 0;
+        display: block;
+    }
+
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+    form {
+        width: 90%;
+    }
+
+    p {
+        width: 90%;
+    }
+}
+/* ===== قسم الخدمات ===== */
+.services {
+    padding: 80px 20px;
+    background-color: var(--color-bg-alt);
+    text-align: center;
+    animation: fadeIn 1.5s ease;
+}
+
+.services h2 {
+    font-size: 34px;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+.services-desc {
+    font-size: 18px;
+    color: var(--color-text-muted);
+    width: 70%;
+    margin: 0 auto 40px auto;
+    line-height: 1.8;
+}
+
+.services-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.service-card {
+    background: var(--color-bg);
+    width: 260px;
+    padding: 30px 20px;
+    border-radius: 14px;
+    box-shadow: var(--shadow-soft);
+    transition: 0.3s ease;
+    animation: slideUp 1s ease;
+    text-align: center;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-strong);
+}
+
+.service-icon {
+    font-size: 45px;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+}
+/* ===== قسم لماذا نحن ===== */
+.why-us {
+    padding: 80px 20px;
+    background-color: var(--color-bg);
+    text-align: center;
+    animation: fadeIn 1.5s ease;
+}
+
+.why-us h2 {
+    font-size: 34px;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+.why-desc {
+    font-size: 18px;
+    color: var(--color-text-muted);
+    width: 70%;
+    margin: 0 auto 40px auto;
+    line-height: 1.8;
+}
+
+.why-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.why-card {
+    background: var(--color-bg-alt);
+    width: 260px;
+    padding: 30px 20px;
+    border-radius: 14px;
+    box-shadow: var(--shadow-soft);
+    transition: 0.3s ease;
+    animation: slideUp 1s ease;
+    text-align: center;
+}
+
+.why-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-strong);
+}
+
+.why-icon {
+    font-size: 45px;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+}
+/* ===== قسم استقطاب المناديب ===== */
+.drivers {
+    padding: 80px 20px;
+    background-color: var(--color-bg-alt);
+    text-align: center;
+}
+
+.drivers h2 {
+    font-size: 34px;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+.drivers-desc {
+    font-size: 18px;
+    color: var(--color-text-muted);
+    width: 70%;
+    margin: 0 auto 30px auto;
+}
+
+.apply-btn {
+    background-color: var(--color-secondary);
+    color: white;
+    padding: 14px 30px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.3s ease;
+    box-shadow: var(--shadow-soft);
+}
+
+.apply-btn:hover {
+    background-color: #059669;
+    transform: translateY(-4px);
+}
+.signature {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    color: var(--color-text-muted);
+    font-size: 13px;
+    opacity: 0.7;
+}
+/* ===== لوحة التحكم ===== */
+.dashboard-table {
+    width: 95%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    background: var(--color-bg-alt);
+    box-shadow: var(--shadow-soft);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.dashboard-table th {
+    background: var(--color-primary);
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+}
+
+.dashboard-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-main);
+}
+
+.dashboard-table tr:hover {
+    background: rgba(0,0,0,0.05);
+}
+
+.whatsapp-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25d366;
+    color: white;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 9999;
+    transition: 0.25s ease;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.1);
+    background: #1ebe5d;
+}

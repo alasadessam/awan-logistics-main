@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>التقديم على وظيفة مندوب</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<script>
+function saveApplication(e) {
+    e.preventDefault();
+
+    const name = document.querySelector('input[placeholder="الاسم الكامل"]').value;
+    const phone = document.querySelector('input[placeholder="رقم الجوال"]').value;
+    const license = document.querySelectorAll('select')[0].value;
+    const licenseType = document.querySelectorAll('select')[1].value;
+    const iqama = document.querySelectorAll('select')[2].value;
+    const city = document.querySelector('input[placeholder="المدينة"]').value;
+
+    const application = {
+        name,
+        phone,
+        license,
+        licenseType,
+        iqama,
+        city,
+        date: new Date().toLocaleString()
+    };
+
+    let applications = JSON.parse(localStorage.getItem("applications")) || [];
+    applications.push(application);
+    localStorage.setItem("applications", JSON.stringify(applications));
+
+    alert("تم إرسال طلبك بنجاح، سيتم التواصل معك قريباً");
+    e.target.reset();
+}
+</script>
+
+<!-- شريط التنقل -->
+<header class="main-header">
+    <div class="logo">
+        <img src="logo.png" alt="شعار الشركة">
+    </div>
+
+    <nav class="main-nav">
+        <a href="index.html"><i class="fa-solid fa-house"></i> الرئيسية</a>
+        <a href="about.html"><i class="fa-solid fa-building"></i> عن الشركة</a>
+        <a href="contact.html"><i class="fa-solid fa-envelope"></i> تواصل معنا</a>
+    </nav>
+
+    <button class="dark-toggle" id="darkToggle" onclick="toggleDarkMode()">🌙</button>
+</header>
+
+<!-- محتوى الصفحة -->
+<main class="page-content">
+    <h1>التقديم على وظيفة مندوب توصيل</h1>
+    <p>يرجى تعبئة البيانات التالية بدقة ليتم التواصل معك.</p>
+
+    <form onsubmit="saveApplication(event)">
+
+        <div class="input-group">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" placeholder="الاسم الكامل" required>
+        </div>
+
+        <div class="input-group">
+            <i class="fa-solid fa-phone"></i>
+            <input type="text" placeholder="رقم الجوال" required>
+        </div>
+
+        <div class="input-group">
+            <i class="fa-solid fa-id-card"></i>
+            <select required>
+                <option value="">هل لديك رخصة قيادة؟</option>
+                <option>نعم</option>
+                <option>لا</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+    <i class="fa-solid fa-car"></i>
+    <select required>
+        <option value="">نوع الرخصة</option>
+        <option>خصوصي</option>
+        <option>دراجة نارية</option>
+        <option>نقل خفيف</option>
+        <option>نقل ثقيل</option>
+        <option>لا يوجد</option>
+    </select>
+</div>
+
+        <div class="input-group">
+            <i class="fa-solid fa-passport"></i>
+            <select required>
+                <option value="">هل الإقامة سارية؟</option>
+                <option>نعم</option>
+                <option>لا</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <i class="fa-solid fa-location-dot"></i>
+            <input type="text" placeholder="المدينة" required>
+        </div>
+
+        <button type="submit">
+            <i class="fa-solid fa-paper-plane"></i> إرسال الطلب
+        </button>
+    </form>
+
+    <div style="margin-top: 30px;">
+        <a href="index.html" class="back-btn">العودة للصفحة الرئيسية</a>
+    </div>
+</main>
+
+<!-- تذييل -->
+<footer class="main-footer">
+    <p>© 2026 شركة أعوان العربية للخدمات اللوجستية – جميع الحقوق محفوظة</p>
+</footer>
+
+<!-- توقيع ثابت -->
+<div class="signature">إعداد وتصميم: عصام الأسد</div>
+
+<!-- سكربت الوضع الداكن -->
+<script>
+if (localStorage.getItem("darkMode") === "enabled") {
+    document.body.classList.add("dark-mode");
+    document.getElementById("darkToggle").textContent = "☀️";
+} else {
+    document.getElementById("darkToggle").textContent = "🌙";
+}
+
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("darkMode", "enabled");
+        document.getElementById("darkToggle").textContent = "☀️";
+    } else {
+        localStorage.setItem("darkMode", "disabled");
+        document.getElementById("darkToggle").textContent = "🌙";
+    }
+}
+</script>
+
+</body>
+</html>

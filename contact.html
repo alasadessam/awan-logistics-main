@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>تواصل معنا</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header class="main-header">
+    <div class="logo">شركة أعوان العربية للخدمات اللوجستية</div>
+
+    <nav class="main-nav">
+        <a href="index.html"><i class="fa-solid fa-house"></i> الرئيسية</a>
+        <a href="about.html"><i class="fa-solid fa-building"></i> عن الشركة</a>
+        <a href="contact.html" class="active"><i class="fa-solid fa-envelope"></i> تواصل معنا</a>
+    </nav>
+
+    <button class="dark-toggle" id="darkToggle" onclick="toggleDarkMode()">🌙</button>
+</header>
+
+<main class="page-content">
+    <h1>تواصل معنا</h1>
+    <p>يسعدنا تواصلك معنا لأي استفسار حول تشغيل تطبيقات التوصيل أو خدمات إدارة الأسطول.</p>
+
+    <form>
+
+        <div class="input-group">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" placeholder="الاسم الكامل" required>
+        </div>
+
+        <div class="input-group">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" placeholder="البريد الإلكتروني" required>
+        </div>
+
+        <div class="input-group">
+            <i class="fa-solid fa-message"></i>
+            <textarea placeholder="اكتب رسالتك هنا..." rows="5" required></textarea>
+        </div>
+
+        <button type="submit"><i class="fa-solid fa-paper-plane"></i> إرسال</button>
+    </form>
+
+    <div style="margin-top: 30px;">
+        <a href="index.html" class="back-btn">العودة للصفحة الرئيسية</a>
+    </div>
+</main>
+
+<footer class="main-footer">
+    <p>© 2026 شركة أعوان العربية للخدمات اللوجستية – جميع الحقوق محفوظة</p>
+</footer>
+
+<script>
+if (localStorage.getItem("darkMode") === "enabled") {
+    document.body.classList.add("dark-mode");
+    document.getElementById("darkToggle").textContent = "☀️";
+} else {
+    document.getElementById("darkToggle").textContent = "🌙";
+}
+
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("darkMode", "enabled");
+        document.getElementById("darkToggle").textContent = "☀️";
+    } else {
+        localStorage.setItem("darkMode", "disabled");
+        document.getElementById("darkToggle").textContent = "🌙";
+    }
+}
+</script>
+
+</body>
+</html>

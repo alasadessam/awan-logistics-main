@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>لوحة التحكم - طلبات المناديب</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header class="main-header">
+    <div class="logo">لوحة التحكم</div>
+
+    <nav class="main-nav">
+        <a href="index.html"><i class="fa-solid fa-house"></i> الرئيسية</a>
+        <a href="dashboard.html" class="active"><i class="fa-solid fa-table"></i> لوحة التحكم</a>
+    </nav>
+
+    <button class="dark-toggle" id="darkToggle" onclick="toggleDarkMode()">🌙</button>
+</header>
+
+<main class="page-content">
+    <h1>طلبات التقديم على وظيفة مندوب</h1>
+    <p>جميع الطلبات التي تم إرسالها من صفحة التقديم تظهر هنا.</p>
+
+    <table class="dashboard-table">
+        <thead>
+            <tr>
+                <th>الاسم</th>
+                <th>رقم الجوال</th>
+                <th>رخصة قيادة</th>
+                <th>نوع الرخصة</th>
+                <th>الإقامة</th>
+                <th>المدينة</th>
+                <th>تاريخ التقديم</th>
+            </tr>
+        </thead>
+        <tbody id="applicationsBody"></tbody>
+    </table>
+</main>
+
+<footer class="main-footer">
+    <p>© 2026 شركة أعوان العربية للخدمات اللوجستية – جميع الحقوق محفوظة</p>
+</footer>
+
+<div class="signature">إعداد وتصميم: عصام الأسد</div>
+
+<script>
+// Dark Mode
+if (localStorage.getItem("darkMode") === "enabled") {
+    document.body.classList.add("dark-mode");
+    document.getElementById("darkToggle").textContent = "☀️";
+} else {
+    document.getElementById("darkToggle").textContent = "🌙";
+}
+
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+    if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("darkMode", "enabled");
+        document.getElementById("darkToggle").textContent = "☀️";
+    } else {
+        localStorage.setItem("darkMode", "disabled");
+        document.getElementById("darkToggle").textContent = "🌙";
+    }
+}
+
+// Load Applications
+function loadApplications() {
+    const applications = JSON.parse(localStorage.getItem("applications")) || [];
+    const tableBody = document.getElementById("applicationsBody");
+
+    applications.forEach(app => {
+        const row = `
+            <tr>
+                <td>${app.name}</td>
+                <td>${app.phone}</td>
+                <td>${app.license}</td>
+                <td>${app.licenseType}</td>
+                <td>${app.iqama}</td>
+                <td>${app.city}</td>
+                <td>${app.date}</td>
+            </tr>
+        `;
+        tableBody.innerHTML += row;
+    });
+}
+
+loadApplications();
+</script>
+
+</body>
+</html>
