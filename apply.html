@@ -140,6 +140,10 @@ function saveApplication(e) {
 function showPopup() {
     document.getElementById("successPopup").style.display = "flex";
 }
+window.open(
+    `https://wa.me/966531841554?text=مرحبًا، اسمي ${application.name}%0Aقدمت طلب الانضمام كمندوب توصيل لدى شركة أعوان العربية للخدمات اللوجستية.%0A%0A• رقم الجوال: ${application.phone}%0A• رقم الهوية: ${application.idNumber}%0A• المدينة: ${application.city}%0A• نوع الرخصة: ${application.licenseType}%0A%0Aشكرًا لكم، وأتطلع للتواصل معكم.`,
+    "_blank"
+);
 
 function closePopup() {
     document.getElementById("successPopup").style.display = "none";
