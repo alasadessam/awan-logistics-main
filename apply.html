@@ -100,8 +100,15 @@
 <footer class="main-footer">
     <p>© 2026 شركة أعوان العربية للخدمات اللوجستية – جميع الحقوق محفوظة</p>
 </footer>
-
+<div id="successPopup" class="popup-overlay">
+    <div class="popup-box">
+        <h2>تم إرسال طلبك بنجاح</h2>
+        <p>سيتم التواصل معك قريباً</p>
+        <button onclick="closePopup()">إغلاق</button>
+    </div>
+</div>
 <script>
+    
 function saveApplication(e) {
     e.preventDefault();
 
@@ -123,10 +130,19 @@ function saveApplication(e) {
     })
     .then(res => res.text())
     .then(data => {
-        alert("تم إرسال طلبك بنجاح، سيتم التواصل معك قريباً");
+        showPopup();
         e.target.reset();
         toggleLicenseType();
     });
+}
+</script>
+<script>
+function showPopup() {
+    document.getElementById("successPopup").style.display = "flex";
+}
+
+function closePopup() {
+    document.getElementById("successPopup").style.display = "none";
 }
 </script>
 <!-- سكربت الوضع الداكن -->
