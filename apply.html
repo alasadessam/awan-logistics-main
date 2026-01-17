@@ -9,36 +9,6 @@
 
 <body>
 
-<script>
-function saveApplication(e) {
-    e.preventDefault();
-
-    const name = document.querySelector('input[placeholder="الاسم الكامل"]').value;
-    const phone = document.querySelector('input[placeholder="رقم الجوال"]').value;
-    const license = document.querySelectorAll('select')[0].value;
-    const licenseType = document.querySelectorAll('select')[1].value;
-    const iqama = document.querySelectorAll('select')[2].value;
-    const city = document.querySelector('input[placeholder="المدينة"]').value;
-
-    const application = {
-        name,
-        phone,
-        license,
-        licenseType,
-        iqama,
-        city,
-        date: new Date().toLocaleString()
-    };
-
-    let applications = JSON.parse(localStorage.getItem("applications")) || [];
-    applications.push(application);
-    localStorage.setItem("applications", JSON.stringify(applications));
-
-    alert("تم إرسال طلبك بنجاح، سيتم التواصل معك قريباً");
-    e.target.reset();
-}
-</script>
-
 <!-- شريط التنقل -->
 <header class="main-header">
     <div class="logo">
@@ -59,68 +29,67 @@ function saveApplication(e) {
     <h1>التقديم على وظيفة مندوب توصيل</h1>
     <p>يرجى تعبئة البيانات التالية بدقة ليتم التواصل معك.</p>
 
-    <<form onsubmit="saveApplication(event)">
+    <form onsubmit="saveApplication(event)">
 
-    <div class="input-group">
-        <i class="fa-solid fa-user"></i>
-        <input type="text" id="name" placeholder="الاسم الكامل" required>
-    </div>
+        <div class="input-group">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" id="name" placeholder="الاسم الكامل" required>
+        </div>
 
-    <div class="input-group">
-        <i class="fa-solid fa-phone"></i>
-        <input type="text" id="phone" placeholder="رقم الجوال" required>
-    </div>
+        <div class="input-group">
+            <i class="fa-solid fa-phone"></i>
+            <input type="text" id="phone" placeholder="رقم الجوال" required>
+        </div>
 
-    <div class="input-group">
-        <i class="fa-solid fa-id-card"></i>
-        <input type="text" id="idNumber" placeholder="رقم الهوية" required>
-    </div>
+        <div class="input-group">
+            <i class="fa-solid fa-id-card"></i>
+            <input type="text" id="idNumber" placeholder="رقم الهوية" required>
+        </div>
 
-    <div class="input-group">
-        <i class="fa-solid fa-user-clock"></i>
-        <input type="number" id="age" placeholder="العمر" required>
-    </div>
+        <div class="input-group">
+            <i class="fa-solid fa-user-clock"></i>
+            <input type="number" id="age" placeholder="العمر" required>
+        </div>
 
-    <div class="input-group">
-        <i class="fa-solid fa-id-card"></i>
-        <select id="hasLicense" required onchange="toggleLicenseType()">
-            <option value="">هل لديك رخصة قيادة؟</option>
-            <option value="نعم">نعم</option>
-            <option value="لا">لا</option>
-        </select>
-    </div>
+        <div class="input-group">
+            <i class="fa-solid fa-id-card"></i>
+            <select id="hasLicense" required onchange="toggleLicenseType()">
+                <option value="">هل لديك رخصة قيادة؟</option>
+                <option value="نعم">نعم</option>
+                <option value="لا">لا</option>
+            </select>
+        </div>
 
-    <div class="input-group" id="licenseTypeGroup">
-        <i class="fa-solid fa-car"></i>
-        <select id="licenseType">
-            <option value="">نوع الرخصة</option>
-            <option>خصوصي</option>
-            <option>دراجة نارية</option>
-            <option>نقل خفيف</option>
-            <option>نقل ثقيل</option>
-            <option>لا يوجد</option>
-        </select>
-    </div>
+        <div class="input-group" id="licenseTypeGroup">
+            <i class="fa-solid fa-car"></i>
+            <select id="licenseType">
+                <option value="">نوع الرخصة</option>
+                <option>خصوصي</option>
+                <option>دراجة نارية</option>
+                <option>نقل خفيف</option>
+                <option>نقل ثقيل</option>
+                <option>لا يوجد</option>
+            </select>
+        </div>
 
-    <div class="input-group">
-        <i class="fa-solid fa-passport"></i>
-        <select id="iqama" required>
-            <option value="">هل الإقامة سارية؟</option>
-            <option>نعم</option>
-            <option>لا</option>
-        </select>
-    </div>
+        <div class="input-group">
+            <i class="fa-solid fa-passport"></i>
+            <select id="iqama" required>
+                <option value="">هل الإقامة سارية؟</option>
+                <option>نعم</option>
+                <option>لا</option>
+            </select>
+        </div>
 
-    <div class="input-group">
-        <i class="fa-solid fa-location-dot"></i>
-        <input type="text" id="city" placeholder="المدينة" required>
-    </div>
+        <div class="input-group">
+            <i class="fa-solid fa-location-dot"></i>
+            <input type="text" id="city" placeholder="المدينة" required>
+        </div>
 
-    <button type="submit">
-        <i class="fa-solid fa-paper-plane"></i> إرسال الطلب
-    </button>
-
-</form>
+        <button type="submit">
+            <i class="fa-solid fa-paper-plane"></i> إرسال الطلب
+        </button>
+    </form>
 
     <div style="margin-top: 30px;">
         <a href="index.html" class="back-btn">العودة للصفحة الرئيسية</a>
@@ -132,9 +101,34 @@ function saveApplication(e) {
     <p>© 2026 شركة أعوان العربية للخدمات اللوجستية – جميع الحقوق محفوظة</p>
 </footer>
 
-<!-- توقيع ثابت -->
-<div class="signature">إعداد وتصميم: عصام الأسد</div>
+<script>
+function saveApplication(e) {
+    e.preventDefault();
 
+    const application = {
+        name: document.getElementById("name").value,
+        phone: document.getElementById("phone").value,
+        idNumber: document.getElementById("idNumber").value,
+        age: document.getElementById("age").value,
+        hasLicense: document.getElementById("hasLicense").value,
+        licenseType: document.getElementById("licenseType").value,
+        iqama: document.getElementById("iqama").value,
+        city: document.getElementById("city").value,
+        date: new Date().toLocaleString()
+    };
+
+    fetch("https://script.google.com/macros/s/AKfycbz096j5DU4M9bfMifxCu_ZaQOL8ilW82qdEKTV18Z16II1X8Y0WQmIJvaKhF6K76er04g/exec", {
+        method: "POST",
+        body: JSON.stringify(application)
+    })
+    .then(res => res.text())
+    .then(data => {
+        alert("تم إرسال طلبك بنجاح، سيتم التواصل معك قريباً");
+        e.target.reset();
+        toggleLicenseType();
+    });
+}
+</script>
 <!-- سكربت الوضع الداكن -->
 <script>
 if (localStorage.getItem("darkMode") === "enabled") {
