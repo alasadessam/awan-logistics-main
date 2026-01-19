@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Salary</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<header class="main-header">
+    <div class="logo">ESSAM Logistics</div>
+
+    <nav class="main-nav">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="login.html" class="active"><i class="fa-solid fa-id-card"></i> Employee Card</a>
+    </nav>
+
+    <button class="dark-toggle" id="darkToggle" onclick="toggleDarkMode()">🌙</button>
+</header>
+
+<main class="page-content">
+
+    <h1>Employee Salary Details</h1>
+
+    <div class="salary-card" id="salaryCard">
+        <p>Loading employee data...</p>
+    </div>
+
+</main>
+
+<footer class="main-footer">
+    <p>© 2026 ESSAM Logistics – All Rights Reserved</p>
+</footer>
+
+<script>
+if (localStorage.getItem("darkMode") === "enabled") {
+    document.body.classList.add("dark-mode");
+    document.getElementById("darkToggle").textContent = "☀️";
+} else {
+    document.getElementById("darkToggle").textContent = "🌙";
+}
+
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("darkMode", "enabled");
+        document.getElementById("darkToggle").textContent = "☀️";
+    } else {
+        localStorage.setItem("darkMode", "disabled");
+        document.getElementById("darkToggle").textContent = "🌙";
+    }
+}
+
+// Fetch employee data
+window.onload = function () {
+    const iqama = localStorage.getItem("iqama");
+    const pin = localStorage.getItem("pin");
+
+    if (!iqama || !pin) {
+        document.getElementById("salaryCard").innerHTML = "<p>Error: Missing login data.</p>";
+        return;
+    }
+
+    fetch("https://script.google.com/macros/s/AKfycbxdws_HOv0WBSXIsAT8QleBO74a_QPrd9rIcqNC4KAKv37DJcyivTd8pwFQzS8IiYmdHA/exec", {
+        method: "POST",
+        body: JSON.stringify({ iqama: iqama, pin: pin })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === "error") {
+            document.getElementById("salaryCard").innerHTML = "<p>Invalid Iqama or PIN.</p>";
+            return;
+        }
+
+        document.getElementById("salaryCard").innerHTML = `
+            <div class="card-section">
+                <h2>Employee Information</h2>
+                <p><strong>Name:</strong> ${data.name}</p>
+                <p><strong>Iqama:</strong> ${data.iqama}</p>
+            </div>
+
+            <div class="card-section">
+                <h2>Performance</h2>
+                <p><strong>Total Orders:</strong> ${data.total_orders}</p>
+                <p><strong>Total KM:</strong> ${data.total_km}</p>
+                <p><strong>Target:</strong> ${data.target}</p>
+            </div>
+
+            <div class="card-section">
+                <h2>Salary Details</h2>
+                <p><strong>Total Salary:</strong> ${data.total_salary} SAR</p>
+                <p><strong>Hunger Deduction:</strong> ${data.hunger_deduction} SAR</p>
+                <p><strong>Wallet Deduction:</strong> ${data.wallet_deduction} SAR</p>
+                <p><strong>Petrol Deduction:</strong> ${data.petrol_deduction} SAR</p>
+                <p><strong>Awan Deduction:</strong> ${data.awan_deduction} SAR</p>
+                <p><strong>Last Salary:</strong> ${data.last_salary} SAR</p>
+            </div>
+
+            <div class="card-section">
+                <h2>Notes</h2>
+                <p>${data.notes}</p>
+            </div>
+        `;
+    });
+}
+</script>
+
+</body>
+</html>
