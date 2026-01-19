@@ -1,5 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Salary Details</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<header class="main-header">
+    <div class="logo">AWAN Logistics</div>
+
+    <nav class="main-nav">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
+        <a href="salary.html" class="active"><i class="fa-solid fa-money-bill"></i> Salary</a>
+    </nav>
+
+    <button class="dark-toggle" id="darkToggle" onclick="toggleDarkMode()">🌙</button>
+</header>
+
+<main class="page-content">
+
+    <h1>Salary Details</h1>
+
+    <div id="salaryCard" class="login-card" style="padding: 20px;"></div>
+
+</main>
+
+<footer class="main-footer">
+    <p>© 2026 AWAN Logistics – All Rights Reserved</p>
+</footer>
+
 <script>
+/* Dark Mode */
+if (localStorage.getItem("darkMode") === "enabled") {
+    document.body.classList.add("dark-mode");
+    document.getElementById("darkToggle").textContent = "☀️";
+} else {
+    document.getElementById("darkToggle").textContent = "🌙";
+}
+
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("darkMode", "enabled");
+        document.getElementById("darkToggle").textContent = "☀️";
+    } else {
+        localStorage.setItem("darkMode", "disabled");
+        document.getElementById("darkToggle").textContent = "🌙";
+    }
+}
+
+/* Fetch Salary Data */
 window.onload = function () {
+
     const iqama = localStorage.getItem("iqama");
     const pin = localStorage.getItem("pin");
 
@@ -8,7 +65,7 @@ window.onload = function () {
         return;
     }
 
-    fetch("https://script.google.com/macros/s/AKfycbxWB3uOinQEDxQw6YIWdB0TVQ6lMfwMPkq5fb7X2TXaNA4nWiXJ5Szo7pAN9gcteX1iBA/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbxwsCXh8P8K3jPXEo54oOCkFb9LeDZsI_U627tA0xhaqbbxbDiw7cTaa5UYeg6_K3oLsQ/exec", {
         method: "POST",
         body: JSON.stringify({ iqama: iqama, pin: pin })
     })
@@ -28,14 +85,14 @@ window.onload = function () {
             </div>
 
             <div class="card-section">
-    <h2>Performance</h2>
-    <p><strong>Total Orders:</strong> ${data.total_orders}</p>
-    <p><strong>Order Price:</strong> ${data.order_price} SAR</p>
-    <p><strong>Total KM:</strong> ${data.total_km}</p>
-    <p><strong>KM Price:</strong> ${data.km_price} SAR</p>
-    <p><strong>Total Orders + KM:</strong> ${data.total_orders_km}</p>
-    <p><strong>Target:</strong> ${data.target}</p>
-</div>
+                <h2>Performance</h2>
+                <p><strong>Total Orders:</strong> ${data.total_orders}</p>
+                <p><strong>Order Price:</strong> ${data.order_price} SAR</p>
+                <p><strong>Total KM:</strong> ${data.total_km}</p>
+                <p><strong>KM Price:</strong> ${data.km_price} SAR</p>
+                <p><strong>Total Orders + KM:</strong> ${data.total_orders_km}</p>
+                <p><strong>Target:</strong> ${data.target}</p>
+            </div>
 
             <div class="card-section">
                 <h2>Salary Details</h2>
@@ -56,3 +113,6 @@ window.onload = function () {
     });
 }
 </script>
+
+</body>
+</html>
