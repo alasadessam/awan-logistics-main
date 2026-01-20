@@ -621,3 +621,41 @@ input:focus, textarea:focus {
     border-radius: 8px;
     cursor: pointer;
 }
+.home-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.main-cta {
+    background: #ffb100;
+    color: #000;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.main-cta:hover {
+    background: #ffca3a;
+}
+
+.secondary-cta {
+    background: #2d89ef;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    display: inline-block;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.secondary-cta:hover {
+    background: #1f6fce;
+}
