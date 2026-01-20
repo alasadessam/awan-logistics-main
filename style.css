@@ -659,3 +659,87 @@ input:focus, textarea:focus {
 .secondary-cta:hover {
     background: #1f6fce;
 }
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.home-btn, .back-btn {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* الرئيسية */
+.home-btn {
+    background: #1ebe5d;
+    color: white;
+}
+
+.home-btn:hover {
+    background: #ffca3a;
+}
+
+/* رجوع */
+.back-btn {
+    background: #2d89ef;
+    color: white;
+}
+
+.back-btn:hover {
+    background: #1f6fce;
+}
+
+.back-btn i {
+    margin-left: 6px;
+}
+
+.home-btn i {
+    margin-left: 6px;
+}
+/* الحاوية */
+.home-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* زر قدم الآن كمندوب (أخضر وصغير) */
+.main-cta {
+    background: #28a745; /* أخضر */
+    color: white;
+    padding: 10px 16px; /* أصغر */
+    border-radius: 8px;
+    font-size: 16px; /* أصغر */
+    font-weight: bold;
+    display: inline-block;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.main-cta:hover {
+    background: #34c759;
+}
+
+/* زر دخول الموظف (أصغر) */
+.secondary-cta {
+    background: #2d89ef;
+    color: white;
+    padding: 9px 16px; /* أصغر */
+    border-radius: 8px;
+    font-size: 15px; /* أصغر */
+    display: inline-block;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.secondary-cta:hover {
+    background: #1f6fce;
+}
